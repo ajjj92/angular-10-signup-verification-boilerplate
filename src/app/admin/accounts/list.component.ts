@@ -4,16 +4,18 @@ import { first } from 'rxjs/operators';
 import { AccountService } from '@app/_services';
 import { Account } from '@app/_models';
 
-@Component({ templateUrl: 'list.component.html' })
+
+@Component({ templateUrl: 'list.component.html',styleUrls:['list.component.css'] })
 export class ListComponent implements OnInit {
     accounts: any[];
-
+    displayedColumns: string[] = ['name', 'email', 'role','action'];
     constructor(private accountService: AccountService) {}
 
     ngOnInit() {
         this.accountService.getAll()
             .pipe(first())
             .subscribe(accounts => this.accounts = accounts);
+
     }
 
     deleteAccount(id: string) {
