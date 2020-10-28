@@ -3,7 +3,7 @@
 <a routerLink="add" class="btn btn-sm btn-success mb-2">Create Account</a>
 <div class="main-container mat-elevation-z8">
     <div class ="mat-table-container">
-        <table mat-table [dataSource]="accounts" class="mat-elevation-z8" >
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
             <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef style="width:30%"> Name </th>
             <td mat-cell *matCellDef="let account"> {{account.title}} {{account.firstName}} {{account.lastName}} </td>
@@ -35,4 +35,5 @@
                 <tr mat-row *matRowDef="let account; columns: displayedColumns;"></tr>
         </table>
     </div>
+    <mat-paginator [length]="dataSource.data.length" [pageSize]="5"></mat-paginator>
 </div>
