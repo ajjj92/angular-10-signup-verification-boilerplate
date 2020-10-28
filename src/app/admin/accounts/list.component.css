@@ -1,0 +1,14 @@
+/*Import premade styling for table for extra eyecandy*/
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+table {
+    width: 100%;
+}
+.main-container {
+    position: relative;
+}
+.mat-table-container{
+    position: relative;
+    max-height: 350px;
+    overflow: auto;
+}
