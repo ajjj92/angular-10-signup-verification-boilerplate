@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
     displayedColumns: string[] = ['name', 'email', 'role','action'];
     accounts: any[];
     dataSource: MatTableDataSource<Account>;
+    maxlength: number;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -20,12 +21,11 @@ export class ListComponent implements OnInit {
     ngOnInit() {
         this.accountService.getAll()
             .pipe(first())
-            .subscribe(accounts => {this.dataSource = new MatTableDataSource(accounts)});
+            .subscribe(accounts => {this.dataSource = new MatTableDataSource(accounts);
+                                    this.dataSource.paginator = this.paginator;
+                                    this.maxlength = accounts.length;});
     }
-    ngAfterViewInit(): void {
-        this.dataSource.paginator = this.paginator
-    }
-
+ 
     deleteAccount(id: string) {
         const account = this.accounts.find(x => x.id === id);
         account.isDeleting = true;

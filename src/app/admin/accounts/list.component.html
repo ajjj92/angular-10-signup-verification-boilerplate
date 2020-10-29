@@ -35,5 +35,5 @@
                 <tr mat-row *matRowDef="let account; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <mat-paginator [length]="dataSource.data.length" [pageSize]="5"></mat-paginator>
+    <mat-paginator [length]="maxlength" [pageSize]="5"></mat-paginator>
 </div>
